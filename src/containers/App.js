@@ -14,7 +14,12 @@ class App extends Component {
           image:'../assets/gaticornio.jpg',
           text:'../assets/gaticornio.txt',
           id:'1',
-          comments: []
+          comments: [
+            {task:'hola',
+              likeCounter: 1},
+            {task:'adios',
+              likeCounter: 2}
+          ]
         },
         {
           unicorn: 'Ornitorrincornio',
@@ -27,12 +32,34 @@ class App extends Component {
       task: ''
     }    
   }
+// Agregar función para añadir comentario
+addTaskToList=()=>{
+  // add task to this.state.list
+  if (this.state.task){
+  let newList=this.state.list
+  
+  newList.push({
+    task: this.state.task,
+    completed: false,
+    likeCounter:0
+  })
 
+  this.setState({
+    task:'',
+    list:newList
+  })
+  }
+  
+}
+// AGregar funcion para dar like
   render() {
     console.log('Abriendo el App');
     
       return (
         <Header 
+        // pasar las funciones en los props
+
+        // mandar el task para agregar los comentarios 
         clickHandler={this.goToView}
         list={this.state.list}
         />

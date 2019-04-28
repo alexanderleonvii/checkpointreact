@@ -5,7 +5,9 @@ import About from './About';
 import View from './View'
 
 const Header = (props) => {
-  let {list, clickHandler} = props
+  let {list, clickHandler
+  // para recibir las otras funciones y el task
+  } = props
   console.log('Header props', props)
   return(
     <div>
@@ -42,7 +44,9 @@ const Header = (props) => {
           path="/view/:id"
           render={(props) => 
             <View {...props} 
-              list={list} clickHandler={clickHandler} 
+              list={list} clickHandler={clickHandler
+              // aqui van las funciones creadas y el task
+              } 
             />}
         />
       
