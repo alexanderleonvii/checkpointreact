@@ -5,13 +5,13 @@ import About from './About';
 import View from './View'
 
 const Header = (props) => {
-  let {list, clickHandler} = props
+  let {list, clickHandler, addCommentToUnicorn, comment, textareaHandler} = props
   console.log('Header props', props)
   return(
     <div>
       <div className="header">
         <Link to="/home">
-          <img src="../assets/logo.png" className="logo-img" />
+          <img src="../assets/logo.png" className="logo-img" alt="Unicornios" />
           <span className="logo-name">Unicornios</span>
         </Link>
         <div className="menu">
@@ -31,7 +31,7 @@ const Header = (props) => {
           path={["/view/:id", "/unicorn/:id", "/view/:unicornio" ]}
           render={(props) => 
             <View {...props} 
-              list={list} clickHandler={clickHandler} 
+              list={list} comment={comment} textareaHandler={textareaHandler} clickHandler={clickHandler} addCommentToUnicorn={addCommentToUnicorn}
             />}
         />
     </div>

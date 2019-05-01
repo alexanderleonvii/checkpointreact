@@ -8,10 +8,10 @@ const CardListItem = (props) => {
     <div className="cardItem">
       <h2>{item.unicorn}</h2>
       <figure>
-        <img src={item.image}
+        <img src={item.image} alt={item.unicorn}
         />
       </figure>
-      <object data={item.text}></object>
+      <object data={item.text}>{item.text}</object>
       <Link to={`/view/${item.id}`}>
         <button className="button">
           Vé a {item.unicorn}

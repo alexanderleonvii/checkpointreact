@@ -6,6 +6,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
+      comment: '',
       list: [
         {  
           unicorn: 'Gaticornio',
@@ -26,13 +27,37 @@ class App extends Component {
     }    
   }
 
+  updateComment = (e) => {
+    this.setState({
+      comment: e.target.value
+    })
+
+  }
+
+  addCommentToUnicorn = (index) => {
+    let newList = this.state.list;
+    let newComment = newList[index].comments;
+
+    newComment.push({
+      comment: this.state.comment,
+      likes:0
+    })
+
+    this.setState({
+      comment: '',
+      list: newList
+    })
+  }
+
   render() {
-    console.log('Abriendo el App');
     
       return (
         <Header 
         clickHandler={this.goToView}
         list={this.state.list}
+        comment={this.state.comment}
+        textareaHandler={this.updateComment}
+        addCommentToUnicorn={this.addCommentToUnicorn}
         />
       );
   }

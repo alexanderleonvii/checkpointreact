@@ -1,8 +1,11 @@
 import React from 'react'
 
 const Comments = (props) => {
+	let {comment, likes} = props
 	return (
-		<div> Este es un comentario
+		<div>
+			<div className='comment-txt'>{comment} </div>
+			<div className='likes'>Likes: {likes}</div>
 		</div>
 	)
 }
