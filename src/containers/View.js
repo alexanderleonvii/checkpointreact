@@ -3,8 +3,10 @@ import Textarea from '../components/comments/Textarea'
 import Button from '../components/comments/Button'
 import Comments from '../containers/Comments'
 
+
 const View = (props) => {
-	let {list, clickHandler} = props
+	let {list, inputHandler, clickHandler, taskValue, likeSubmitter, postComment} = props
+
 	console.log(props)
 	console.log(props.match.params.id);
 	let index = props.match.params.id - 1
@@ -17,15 +19,21 @@ const View = (props) => {
       <h2>{item.unicorn}</h2>
       <figure>
         <img src={item.image} 
-        />
-      </figure>
-      <object data={item.text}></object>
-			<div>
+    		    />
+      	</figure>
+      	<object data={item.text}></object>
+				<div>
 				<h2>Deja tu comentario:</h2>
-				<Textarea/>
-				<Button />
+				<Textarea
+				inputHandler={inputHandler}
+        taskValue={taskValue}/>
+				<Button clickHandler={postComment}>
+          Enviar
+				</Button>
 
-				<Comments />
+				<Comments 
+				listItems={list}
+				likeSubmitter={likeSubmitter}/>
 			</div>
     </div>
     </div>
