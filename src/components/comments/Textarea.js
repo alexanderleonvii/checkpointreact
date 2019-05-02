@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Textarea = (props) => {
-	let {comment, textareaHandler} = props
+	let {comment, textareaHandler, textClass, textPlaceHolder} = props
 	return (
-		<textarea className="textarea" onChange={textareaHandler} placeholder="Los comentarios van aqui!!">{comment}</textarea>
+		<textarea className={textClass} onChange={textareaHandler} value={comment} placeholder={textPlaceHolder}/>
 	)
 }
 

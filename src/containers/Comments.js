@@ -4,12 +4,22 @@ import CommentItem from '../components/comments/CommentItem'
 
 
 const Comments = (props) => {
-	let {comments} = props
-
+	let {comments, likeSubmitter, objectindex} = props
+	let indx=-1
 	let listComment = comments.map((item, index) => {
-		
+		console.log("Key", indx)
+		indx++
 		return (
-			<CommentItem key={index} comment={item.comment} likes={item.likes} />
+			<CommentItem 
+				key={index}
+				index={indx}
+				comment={item.comment}
+				likes={item.likes}
+				poster={item.poster}
+				postdate={item.postdate}
+				likeSubmitter={likeSubmitter}
+				objectindex={objectindex}
+			/>
 		)
 	});
 

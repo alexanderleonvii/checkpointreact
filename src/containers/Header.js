@@ -5,7 +5,7 @@ import About from './About';
 import View from './View'
 
 const Header = (props) => {
-  let {list, clickHandler, addCommentToUnicorn, comment, textareaHandler} = props
+  let {list, userHandler, addCommentToUnicorn, likeSubmitter, comment, textareaHandler, poster} = props
   console.log('Header props', props)
   return(
     <div>
@@ -23,7 +23,7 @@ const Header = (props) => {
       <Route
         exact path={["/", "/home"]}
         render={(props) => <Home {...props} 
-        list={list} clickHandler={clickHandler} 
+        list={list} 
         />}
       />
       <Route exact path="/about" component={About}/>
@@ -31,7 +31,13 @@ const Header = (props) => {
           path={["/view/:id", "/unicorn/:id", "/view/:unicornio" ]}
           render={(props) => 
             <View {...props} 
-              list={list} comment={comment} textareaHandler={textareaHandler} clickHandler={clickHandler} addCommentToUnicorn={addCommentToUnicorn}
+              list={list}
+              comment={comment}
+              poster={poster}
+              textareaHandler={textareaHandler}
+              userHandler={userHandler}
+              addCommentToUnicorn={addCommentToUnicorn}
+              likeSubmitter={likeSubmitter}
             />}
         />
     </div>

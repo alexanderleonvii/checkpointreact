@@ -2,14 +2,13 @@ import React from 'react'
 
 
 const Button = (props) => {
-  let {addCommentToUnicorn} = props
+  //let {clickHandler, enabler} = props
   console.log(props)
   return (
-    <button className="button" type="button" onClick={addCommentToUnicorn}>
-      Enviar
+    <button className="button" type="button" onClick={props.clickHandler} disabled={props.enabler}> 
+      {props.children}
     </button>
   )
 } 
-
 
 export default Button
