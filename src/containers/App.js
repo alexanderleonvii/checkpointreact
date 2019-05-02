@@ -23,7 +23,7 @@ class App extends Component {
           comments: []
         }
       ],
-      task: ''
+      poster: ''
     }    
   }
 
@@ -31,20 +31,36 @@ class App extends Component {
     this.setState({
       comment: e.target.value
     })
+  }
 
+  updateUser = (e) => {
+    this.setState({
+      poster: e.target.value
+    })
   }
 
   addCommentToUnicorn = (index) => {
     let newList = this.state.list;
-    let newComment = newList[index].comments;
+    let date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 
-    newComment.push({
+    newList[index].comments.push({
       comment: this.state.comment,
-      likes:0
+      poster: this.state.poster,
+      likes:0,
+      postdate: date
     })
 
     this.setState({
       comment: '',
+      poster: '',
+      list: newList
+    })
+  }
+
+  likeSubmitter = (indexObject, index) => {
+    let newList = this.state.list;
+    newList[indexObject].comments[index].likes++;
+    this.setState({
       list: newList
     })
   }
@@ -53,11 +69,13 @@ class App extends Component {
     
       return (
         <Header 
-        clickHandler={this.goToView}
+        userHandler={this.updateUser}
         list={this.state.list}
         comment={this.state.comment}
+        poster={this.state.poster}
         textareaHandler={this.updateComment}
         addCommentToUnicorn={this.addCommentToUnicorn}
+        likeSubmitter={this.likeSubmitter}
         />
       );
   }

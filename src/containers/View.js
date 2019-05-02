@@ -4,12 +4,14 @@ import Button from '../components/comments/Button'
 import Comments from '../containers/Comments'
 
 const View = (props) => {
-	let {list, clickHandler, addCommentToUnicorn, comment, textareaHandler } = props
+	let {list, userHandler, addCommentToUnicorn, likeSubmitter, comment, poster, textareaHandler } = props
 	console.log(props)
 	console.log(props.match.params.id);
 	let index = props.match.params.id - 1
 	console.log('View List: ', list[index])
 	let item = list[index]
+	let isButtonEnabled = (comment.length>0 && poster.length>0)? "" : "disabled"
+	
 
 	return (
 		<div className="home-intro view">
@@ -22,10 +24,35 @@ const View = (props) => {
       <object data={item.text}></object>
 			<div>
 				<h2>Deja tu comentario:</h2>
-				<Textarea comment={comment} textareaHandler={textareaHandler}/>
-				<Button addCommentToUnicorn={() => {addCommentToUnicorn(index)}}  />
-
-				<Comments comments={list[index].comments} />
+				<div>
+				<Comments 
+					comments={list[index].comments}
+					likeSubmitter={likeSubmitter}
+					objectindex={index}
+				/>
+				</div>
+				<div>
+				<Textarea 
+					comment={comment}
+					textareaHandler={textareaHandler}
+					textClass="textarea"
+					textPlaceHolder="Agrega tu comentario aqui!"
+				/>
+				</div>
+				<div>
+				<Textarea 
+					comment={poster}
+					textareaHandler={userHandler}
+					textClass="usertextarea"
+					textPlaceHolder="Ingresa tu correo aqui"
+				/>
+				<Button
+					clickHandler={() => {addCommentToUnicorn(index)}}
+					enabler = {isButtonEnabled}
+				>
+					Enviar
+				</Button>
+				</div>
 			</div>
     </div>
     </div>

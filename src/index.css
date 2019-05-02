@@ -88,6 +88,10 @@ object {
 .button:hover {
 	background: #f36ca7;
 }
+.button:disabled{
+	background:  #fadde9;
+	color: #b7a6d1;
+}
 figure {
 	margin-left: 0px;
 }
@@ -97,4 +101,21 @@ figure {
 	background: rgba(255,255,255,.6);
 	padding: 20px;
 	box-sizing: border-box;
+
+}
+
+.usertextarea {
+	width: 80%;
+	height: 40px;
+	background: rgba(255,255,255,.6);
+	padding: 8px;
+	box-sizing: border-box;
+	overflow-y:hidden;
+	vertical-align: bottom;
+	margin-right: 20px;
+}
+
+.likes button{
+	width: 40px;
+	margin: 10px 20px 10px 10px;
 }
